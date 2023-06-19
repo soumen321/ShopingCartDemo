@@ -10,7 +10,10 @@ import { Provider } from 'react-redux';
 
 const Root = () => (
     <Provider store={store}>
-      <App />
+      
+        <App />
+     
+      
     </Provider>
   )
 

@@ -3,6 +3,7 @@ import logger from 'redux-logger'
 import productReducer from "../redux/slices/ProductSlice";
 import cartReducer from "../redux/slices/CartSlice"
 
+
  const store = configureStore({
     reducer:{
         product:productReducer,

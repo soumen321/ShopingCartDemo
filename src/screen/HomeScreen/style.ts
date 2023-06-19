@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
       height:130,
       aspectRatio:1/1,
       marginVertical:8,
+      marginLeft:6,
       borderTopLeftRadius:12,
       borderBottomLeftRadius:12,
     },

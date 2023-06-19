@@ -1,15 +1,14 @@
 import { Pressable,Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-
-import { useSelector } from 'react-redux';
+import {useAppSelector} from '../store/hooks';
 import { selectNumberOfItems } from '../redux/slices/CartSlice';
 
 import HomeScreen from '../screen/HomeScreen';
 import OrderScreen from '../screen/OrderScreen';
 import ProfileScreen from '../screen/ProfileScreen';
 import ProductDetailsScreen from '../screen/ProductDetailsScreen'
+import MyCartScreen from '../screen/MyCartScreen'
 
 import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5';
 import Foundation from 'react-native-vector-icons/dist/Foundation';
@@ -19,7 +18,7 @@ const HomeStack = createNativeStackNavigator();
 
 const HomeStackNavigator = () => {
 
-  const numberOfItems = useSelector(selectNumberOfItems);
+  const numberOfItems = useAppSelector(selectNumberOfItems);
 
   return (
     <HomeStack.Navigator>
@@ -43,6 +42,11 @@ const HomeStackNavigator = () => {
         name="Product Details"
         component={ProductDetailsScreen}
         options={{ headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="My Cart"
+        component={MyCartScreen}
+       
       />
      
     </HomeStack.Navigator>

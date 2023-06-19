@@ -4,12 +4,9 @@ import {useAppDispatch, useAppSelector} from '../store/hooks';
 import { changeQuantity,addToCart } from '../redux/slices/CartSlice';
 
 
-
 const AddRemove = ({product}) => {
-  const [itemAdd, setItemAdd] = useState(1);
 
   const dispatch = useAppDispatch()
- // const {id,title,price,image,category} = item
 
   const addItemToCart = () =>{
     dispatch(addToCart({product}))
