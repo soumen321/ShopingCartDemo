@@ -1,6 +1,6 @@
 import { Dimensions } from "react-native";
 
-export const insertItems = (arr:[], index:number, item:string) => {
+export const addItemIntoArrayPosition = (arr:[], index:number, item:string) => {
     return [
         ...arr.slice(0, index),     // first half
         item,                       // items to be inserted

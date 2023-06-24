@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Pressable} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import { changeQuantity,addToCart } from '../redux/slices/CartSlice';
 
@@ -26,7 +26,6 @@ const AddRemove = ({product}) => {
   const cartProducts = useAppSelector(state => state.cart);
 
   const cartProduct = cartProducts.products.find((p) => p.id == product.id)
-  console.log("cartProduct  "+cartProduct?.id)
 
   return (
     <View >
