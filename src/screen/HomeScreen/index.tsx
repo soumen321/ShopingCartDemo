@@ -14,10 +14,17 @@ import ProductItem from '../../component/ProductItem';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import useFetch from '../../apiRequest/fetchApi';
 import {fetchProducts} from '../../redux/slices/ProductSlice';
-import {WIDTH, insertItems, toCapitalizeFirstLetter} from '../../utils/utils';
+import {WIDTH,HEIGHT, addItemIntoArrayPosition, toCapitalizeFirstLetter} from '../../utils/utils';
 import {useNavigation} from '@react-navigation/native';
+import uuid from 'react-native-uuid'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
+  const userid = '12345'//uuid.v4()
+  console.log("huserid =>",userid)
+  AsyncStorage.setItem('UID',userid)
+  
+
   const navigation = useNavigation();
   const [indexCheck, setIndexCheck] = useState(0);
 
@@ -28,7 +35,7 @@ const HomeScreen = () => {
   const products = useAppSelector(state => state.product);
   const dispatch = useAppDispatch();
 
-  const newItem = insertItems(items, 0, 'All');
+  const newItem = addItemIntoArrayPosition(items, 0, 'All');
 
   useEffect(() => {
     fetchProduact('');
@@ -45,7 +52,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1,height:HEIGHT-45}}>
       <View style={styles.container}>
         {products.products && !isLoading && (
           <View style={{alignItems: 'center'}}>
@@ -54,7 +61,7 @@ const HomeScreen = () => {
               style={styles.bannerImage}
             />
 
-            <View style={{height: 45, width: '100%', margin: 4}}>
+            <View style={{ width: '100%', margin: 6}}>
               <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -87,12 +94,13 @@ const HomeScreen = () => {
                 )}
               />
             </View>
-
+           
             <FlatList
               showsVerticalScrollIndicator={false}
               data={products.products}
               renderItem={({item}) => <ProductItem product={item} />}
             />
+           
           </View>
         )}
         {isLoading && (
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     width: WIDTH,
-    height: WIDTH * 0.5,
+    height: WIDTH * 0.4,
   },
   categoryContainer: {
     height: 40,
@@ -151,7 +159,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   bottomView: {
-    width: '30%',
+    width: '28%',
     height: 50,
     backgroundColor: '#EE5407',
     justifyContent: 'center',

@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
       borderRadius:12,
       borderWidth:1,
       borderColor:'#d1d1d1',
-      marginVertical:8
-      
+      marginVertical:4
+    
     },
   
     image:{
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
       color:'#374259',
       fontSize:17,    
       fontWeight:'600',
-      width:200,
+      width:190,
       minHeight:30
     },
     price:{
@@ -44,7 +44,6 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FAF0E4',
         borderBottomRightRadius: 12,
         borderTopRightRadius: 12,
-        alignItems:'center',
         justifyContent:'center'
     }
 
