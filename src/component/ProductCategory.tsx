@@ -3,10 +3,9 @@ import React from 'react'
 import {toCapitalizeFirstLetter} from '../utils/utils'
 
 const ProductCategory = ({newItem,indexCheck,onPressCategory}) => {
-  //const {newItem,indexCheck} = data  
-  console.log("cbcfbf"+newItem)
+
   return (
-    <View style={{width: '100%', margin: 6}}>
+    <View style={{margin: 6}}>
       <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}

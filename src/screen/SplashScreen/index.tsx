@@ -5,9 +5,6 @@ const SplashScreen = ({navigation}) => {
   setTimeout(() => {
    navigation.navigate("HomeScreen")
   }, 3000);
-
-
-
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
         <Image

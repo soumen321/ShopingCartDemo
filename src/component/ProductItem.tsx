@@ -13,16 +13,28 @@ const ProductItem = ({product}) => {
   return (
     <Pressable
       style={styles.itemContainer}
+     
       onPress={() => {
         navigation.navigate('Product Details', {id});
       }}>
-      <View>
-        <Image source={{uri: image}} style={styles.image} resizeMode="center" />
-      </View>
-      <View style={{padding: 8}}>
-        <Text numberOfLines={2} style={styles.title}>
-          {title}
-        </Text>
+      
+      <View     
+      style={{ flex: 1, marginLeft: 5, paddingVertical: 5,justifyContent:'center',
+      alignItems:'center' }}
+      >
+        <Image source={{uri: image}}
+         style={styles.image} 
+         resizeMode="center"       
+         />
+         </View>
+      
+      <View       
+      style={{ flex: 2, marginLeft: 5, paddingVertical: 5,justifyContent:'center',
+      alignItems:'center' }}
+      >
+        <Text numberOfLines={2} 
+        style={styles.title}
+        >{title}</Text>
         <Text style={styles.price}>Rs. {price}</Text>
 
         <AddRemove product={product} />

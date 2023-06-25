@@ -13,6 +13,8 @@ const ThankyouScreen = () => {
       return true
   })
 
+  
+
   return (
     <View style={{flex:1}}>
         <View style={{justifyContent:'center',alignItems:'center',height:'100%'}}>

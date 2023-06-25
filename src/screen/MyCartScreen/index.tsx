@@ -60,12 +60,7 @@ const MyCartScreen = () => {
 
   return (
     <View
-      style={{
-        flex: 1,
-        margin: 6,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+      style={{flex: 1,}}>
       {products.products.length > 0 ? (
         <>
           <FlatList

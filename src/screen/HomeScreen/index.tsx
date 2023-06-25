@@ -3,7 +3,7 @@ import {
   View,
   Text,
   Image,
-  StyleSheet,
+  BackHandler,
   FlatList,
   Pressable,
   ActivityIndicator,
@@ -25,7 +25,9 @@ const HomeScreen = () => {
   useEffect(
     () =>
       navigation.addListener('beforeRemove', e => {
-        e.preventDefault();
+        console.log(e);
+        //e.preventDefault();
+        BackHandler.exitApp();
         return;
       }),
     [navigation],
@@ -57,32 +59,23 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, height: HEIGHT - 45}}>
-      <View style={styles.container}>
+    <SafeAreaView style={{flex: 1}}>
+      <View>
         {products.products && !isLoading && (
-          <View style={{alignItems: 'center'}}>
-            <Image
-              source={require('../../../assets/images/banner1.jpg')}
-              style={styles.bannerImage}
-            />
-
+          <>
             <ProductCategory
               newItem={newItem}
               indexCheck={indexCheck}
               onPressCategory={onPressCategory}
             />
 
-            <View style={{marginHorizontal:8}}>
             <FlatList
+              contentContainerStyle={{paddingBottom: 55}}
               showsVerticalScrollIndicator={false}
               data={products.products}
               renderItem={({item}) => <ProductItem product={item} />}
             />
-
-            </View>
-
-            
-          </View>
+          </>
         )}
         {isLoading && (
           <View style={styles.loading}>
