@@ -1,3 +1,5 @@
+<b>A Shopping Cart Application using React Native </b>
+
 React-Redux, Redux-Toolkit , TypeScript, Firebase Authentication , FireStore
 
 
