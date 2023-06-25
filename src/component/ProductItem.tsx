@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
+import {Text, View, Image, Pressable} from 'react-native';
 import React from 'react';
-import {styles} from '../screen/HomeScreen/style';
+import {styles} from './style';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 

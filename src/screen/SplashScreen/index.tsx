@@ -1,11 +1,12 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Image, View } from 'react-native'
 
 const SplashScreen = ({navigation}) => {
 
-    setTimeout(() =>{
-        navigation.navigate("HomeScreen")
-    },2000)
+  setTimeout(() => {
+   navigation.navigate("HomeScreen")
+  }, 3000);
+
+
 
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
@@ -20,5 +21,3 @@ const SplashScreen = ({navigation}) => {
 }
 
 export default SplashScreen
-
-const styles = StyleSheet.create({})

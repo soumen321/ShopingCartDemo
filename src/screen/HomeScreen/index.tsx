@@ -14,18 +14,23 @@ import ProductItem from '../../component/ProductItem';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import useFetch from '../../apiRequest/fetchApi';
 import {fetchProducts} from '../../redux/slices/ProductSlice';
-import {WIDTH,HEIGHT, addItemIntoArrayPosition, toCapitalizeFirstLetter} from '../../utils/utils';
+import {HEIGHT, addItemIntoArrayPosition} from '../../utils/utils';
 import {useNavigation} from '@react-navigation/native';
-import uuid from 'react-native-uuid'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import {styles} from './style';
+import ProductCategory from '../../component/ProductCategory';
 const HomeScreen = () => {
-  const userid = '12345'//uuid.v4()
-  console.log("huserid =>",userid)
-  AsyncStorage.setItem('UID',userid)
-  
-
   const navigation = useNavigation();
+
+  useEffect(
+    () =>
+      navigation.addListener('beforeRemove', e => {
+        e.preventDefault();
+        return;
+      }),
+    [navigation],
+  );
+
   const [indexCheck, setIndexCheck] = useState(0);
 
   const {items, isLoading, error} = useFetch(
@@ -52,7 +57,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1,height:HEIGHT-45}}>
+    <SafeAreaView style={{flex: 1, height: HEIGHT - 45}}>
       <View style={styles.container}>
         {products.products && !isLoading && (
           <View style={{alignItems: 'center'}}>
@@ -61,46 +66,22 @@ const HomeScreen = () => {
               style={styles.bannerImage}
             />
 
-            <View style={{ width: '100%', margin: 6}}>
-              <FlatList
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={newItem}
-                renderItem={({item, index}) => (
-                  <Pressable
-                    style={
-                      indexCheck == index
-                        ? {
-                            ...styles.categoryContainer,
-                            backgroundColor: '#FF8551',
-                          }
-                        : {
-                            ...styles.categoryContainer,
-                            backgroundColor: '#ffffff',
-                          }
-                    }
-                    onPress={() => {
-                      onPressCategory(item, index);
-                    }}>
-                    <Text
-                      style={
-                        indexCheck == index
-                          ? {...styles.text, color: '#ffffff'}
-                          : {...styles.text, color: '#545B77'}
-                      }>
-                      {toCapitalizeFirstLetter(item)}
-                    </Text>
-                  </Pressable>
-                )}
-              />
-            </View>
-           
+            <ProductCategory
+              newItem={newItem}
+              indexCheck={indexCheck}
+              onPressCategory={onPressCategory}
+            />
+
+            <View style={{marginHorizontal:8}}>
             <FlatList
               showsVerticalScrollIndicator={false}
               data={products.products}
               renderItem={({item}) => <ProductItem product={item} />}
             />
-           
+
+            </View>
+
+            
           </View>
         )}
         {isLoading && (
@@ -110,71 +91,16 @@ const HomeScreen = () => {
         )}
         {products.error && !isLoading && <Text>{products.error}</Text>}
 
-        {cartProducts.products.length > 0 && 
-        <Pressable style={styles.bottomView} onPress={() => navigation.navigate('My Cart')}>
-        <Text style={styles.buttonText}>Go to Cart</Text>
-       </Pressable>
-        }  
-        
+        {cartProducts.products.length > 0 && (
+          <Pressable
+            style={styles.bottomView}
+            onPress={() => navigation.navigate('Cart')}>
+            <Text style={styles.buttonText}>Go to Cart</Text>
+          </Pressable>
+        )}
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  loading: {
-    position: 'absolute',
-    left: 40,
-    right: 40,
-    top: 40,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  bannerImage: {
-    width: WIDTH,
-    height: WIDTH * 0.4,
-  },
-  categoryContainer: {
-    height: 40,
-    minWidth: 100,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#d1d1d1',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    marginHorizontal: 4,
-    padding: 8,
-  },
-  text: {
-    color: '#545B77',
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: 'justify',
-    letterSpacing: 0.5,
-  },
-  bottomView: {
-    width: '28%',
-    height: 50,
-    backgroundColor: '#EE5407',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
-    right: 5,
-    borderRadius: 30,
-    marginBottom: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "600",
-    fontSize: 18,
-  },
-});
 
 export default HomeScreen;

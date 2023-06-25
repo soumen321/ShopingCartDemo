@@ -68,7 +68,7 @@ const ProductDetailsScreen = () => {
       {error && !isLoading && <Text>Something went wrong</Text>}
       {cartProducts.products.length > 0 && (
         <Pressable
-          onPress={() => navigation.navigate('My Cart')}
+          onPress={() => navigation.navigate('Cart')}
           style={styles.button}>
           <Text style={styles.buttonText}>Go to Cart</Text>
         </Pressable>

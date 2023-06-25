@@ -1,24 +1,26 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import firestore from '@react-native-firebase/firestore';
-import { getUserId } from '../../utils/session';
+
 import { useIsFocused } from "@react-navigation/native";
+import { useAuthContext } from "../../context/AuthContext";
 
 const OrderScreen = () => {
   const isFocused = useIsFocused();
+  const { userid } = useAuthContext(); 
 
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {
     getOrders();
-  }, [isFocused]);
+  }, [userid,isFocused]);
 
   const getOrders = async () => {
-    const userId = await getUserId()
+   
     const myArray:any = [];
 
-    firestore().collection("order")
-      .where("uid", "==", userId)
+    firestore().collection("tblOrder")
+      .where("uid", "==", userid)
       .get()
       .then(snap => {       
           snap.forEach(doc => {
@@ -32,7 +34,7 @@ const OrderScreen = () => {
     <View style={{flex:1,margin:8,alignItems:'center'}}>
       <Text style={styles.header}>My Orders</Text>
       {orderList.length == 0 &&
-      <Text  style={{...styles.item,color:'red'}}>You have not yet order</Text>
+      <Text  style={{...styles.item,color:'red'}}>You have not order yet</Text>
       }
 
       {orderList.length > 0 &&
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     height:42,
     fontSize:24,
     fontWeight:'600',
-    margin:20
+    margin:16
   },
   itemContainer:{
     borderRadius:12,

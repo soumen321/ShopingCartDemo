@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   addText: {
     color: '#545B77',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
     textAlign: 'justify',
     letterSpacing: 0.5,
