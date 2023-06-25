@@ -1,4 +1,4 @@
 React-Redux, Redux-Toolkit , TypeScript
 
 
-![Screenshot_1687698094](https://github.com/soumen321/ShopingCartDemo/assets/2536037/e22b806b-2b44-4a17-b410-5ab2c930265c)
+<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/e22b806b-2b44-4a17-b410-5ab2c930265c" width="150" height="280">
