@@ -85,12 +85,13 @@ const HomeScreen = () => {
         {products.error && !isLoading && <Text>{products.error}</Text>}
 
         {cartProducts.products.length > 0 && (
-          <Pressable
-            style={styles.bottomView}
-            onPress={() => navigation.navigate('Cart')}>
-            <Text style={styles.buttonText}>Go to Cart</Text>
-          </Pressable>
+           <Pressable
+           style={styles.bottomView}
+           onPress={() => navigation.navigate('Cart')}>
+           <Text style={styles.buttonText}>Go to Cart</Text>
+         </Pressable> 
         )}
+       
       </View>
     </SafeAreaView>
   );
