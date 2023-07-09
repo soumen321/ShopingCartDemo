@@ -1,4 +1,9 @@
-React-Redux, Redux-Toolkit , TypeScript
+<b>A Shopping Cart Application using React Native </b>
 
-<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/ebf7bc3d-58bd-4831-bf20-57e1824c7d1e" width="300" height="600">       
-<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/6fc18c9f-2191-4e64-a336-0922eb45ba0d" width="300" height="600">
+React-Redux, Redux-Toolkit , TypeScript, Firebase Authentication , FireStore
+
+
+<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/e22b806b-2b44-4a17-b410-5ab2c930265c" width="200" height="350"> &nbsp;&nbsp;<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/acf8889b-e96e-424a-b84f-8d5964dbb788" width="200" height="350">&nbsp;&nbsp;<img src="https://github.com/soumen321/ShopingCartDemo/assets/2536037/2535dc48-4260-4c7f-b94d-489d1937ab40" width="200" height="350">&nbsp;
+
+
+
