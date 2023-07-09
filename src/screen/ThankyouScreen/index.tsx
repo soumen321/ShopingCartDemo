@@ -19,7 +19,7 @@ const ThankyouScreen = () => {
     <View style={{flex:1}}>
         <View style={{justifyContent:'center',alignItems:'center',height:'100%'}}>
         <Text style={{fontSize:24,fontWeight:'500',color:'green',margin:20}}>
-        Order place successfully
+        Order placed successfully
         </Text>
         <Text style={{fontSize:24,fontWeight:'500',color:'black',margin:20}}>
             Order Id : {orderid}

@@ -17,8 +17,6 @@ const AuthContextProvider = ({ children }) =>{
         });
       }, []);
 
-  
-    console.log("AuthContextProvider user name ",userid)
     return (
         <AuthContext.Provider value={{userid}}>
             {children}
