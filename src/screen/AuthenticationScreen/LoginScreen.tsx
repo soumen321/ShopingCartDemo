@@ -24,8 +24,7 @@ const LoginScreen = ({navigation}) => {
     setLoading(true)
 
     signInWithEmailAndPassword(auth, email, password)
-    .then(async (res) => {
-      console.log("signInWithEmailAndPassword => ",res)
+    .then(async (res) => {      
       setLoading(false)
       navigation.goBack();
     })
@@ -34,40 +33,8 @@ const LoginScreen = ({navigation}) => {
       Alert.alert(err.message)
     });
 
-
-    // firestore()
-    //   .collection('tblUser')
-    //   .where("email", "==", email)
-    //   .where("password", "==", password)
-    //   .get()
-    //   .then(querySnapshot => {
-       
-    //     goToNextScreen(
-    //       querySnapshot.docs[0]._data.userid,
-    //       querySnapshot.docs[0]._data.mobile,
-    //       querySnapshot.docs[0]._data.name,
-    //     )
-    //   });
   };
 
-  // const goToNextScreen = async (userId, mobile, name) => {  
-    
-  //   setDbUser(userId)
-
-  //   await AsyncStorage.setItem('EMAIL', email);  
-  //   await AsyncStorage.setItem('USERID', userId);  
-  //   await AsyncStorage.setItem('MOBILE', mobile);  
-  //   await AsyncStorage.setItem('NAME', name);  
-
-    
-
-  //   setTimeout(() => {
-  //     setLoading(false)
-  //    // navigation.goBack();
-  //    }, 3000);
-
-   
-  // };
 
   return (
     <View style={styles.container}>
